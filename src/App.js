@@ -1,6 +1,5 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import Login from  "./Componentes/LOGINADMIN/Login";
-import Nave from "./Componentes/Navigation/Nave";
 import "./inicio.css";
 
 import {
@@ -9,19 +8,28 @@ import {
 	Route,
 	Link
 } from 'react-router-dom'
+import Docente from './view/Docente';
+import Admin from './view/Admin';
+import Estudiante from './view/Estudiante';
 
 function App() {
     return (
-    <Fragment >
-	<Router>
-		<Switch>
-			<Route exact path="/">
-				<Login />
-			</Route>
-		</Switch>
-	</Router>       
-</Fragment>
-    
+		<Router>
+			<Switch>
+				<Route exact path="/">
+					<Login />
+				</Route>
+				<Route path="/admin">
+					<Admin />
+				</Route>
+				<Route path="/docente">
+					<Docente />
+				</Route>
+				<Route path="/estudiante">
+					<Estudiante />
+				</Route>
+			</Switch>
+		</Router>
     ); 
 }
 
