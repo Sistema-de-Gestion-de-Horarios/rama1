@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import Docente from './Docente';
-export const ActualizarDocente = () => {
+import Materia from './Materia';
+export const ActualizarMateria = () => {
    
-   const [listDocente, setListDocentes] = useState([]);
+   const [listaMateria, setlistaMateria] = useState([]);
    const [isUpdateIn, setIsUpdateIn] = useState(false); 
 
-   const newDocenteHandler =(docenteName, cargaFloat) => {
-       setListDocentes((prevListDocentes) => {
+   const newMateriaHandler =(MateriaName, cargaFloat) => {
+       setlistaMateria((prevlistaMateria) => {
         return [
-           ...prevListDocentes, 
-           {id: Math.trunc(this.docenteName,this.cargaFloat)} 
+           ...prevlistaMateria, 
+           {id: Math.trunc(this.MateriaName,this.cargaFloat)} 
         ];
       });
    };
@@ -18,7 +18,7 @@ export const ActualizarDocente = () => {
       setIsUpdateIn(true);
    }
 
-   const DocenteHandler = (email, password) => {
+   const MateriaHandler = (email, password) => {
       console.log("Loging in...")
       localStorage.GetItem("isUpdateIn", 1);
       setIsLoggedIn(true);
@@ -34,24 +34,22 @@ export const ActualizarDocente = () => {
 
    return (
       <div>{props.children}
-         {props.docentes.map((doce) => {
+         {props.Materias.map((Mate) => {
             return( 
-               <div key={doce.id}>
+               <div key={Mate.id}>
 
                   <form onSubmit={handlerSubmit}>
-                     <label>Docente</label>
-                     <input type="text" value={this.doce.docenteName}/>
+                     <label>Materia</label>
+                     <input type="text" value={this.Mate.MateriaName}/>
              
                      <label>Carga Horaria</label>
-                     <input type="password" value={this.doce.cargaFloat}/>
+                     <input type="password" value={this.Mate.cargaFloat}/>
                      <button onClick={props.onClick}> {this.props.children}Editar</button>
-                     <button onClick={props.onClick}> {this.props.children}Eliminar</button>
-                     <button onClick={props.onClick}> {this.props.children}Actualizar</button>
                  </form>  
                </div>  
             );
-         })}   
+         })};   
 
       </div>
-   )
-}
+   );
+};

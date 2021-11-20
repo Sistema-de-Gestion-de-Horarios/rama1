@@ -13,10 +13,11 @@ import Docente from './view/Docente';
 import Admin from './view/Admin';
 import Estudiante from './view/Estudiante';
 import Pagina from './Pagina';
+import Materia from './view/Admin/GestionarMateria/TabMateria/Materia';
 import { useState } from 'react';
 import TabDocentes from './view/Admin/components/TabDocentes';
 import ListaDocente from './view/Admin/components/TabDocentes/ListaDocente';
-
+import listaMateria from './view/Admin/GestionarMateria/TabMateria/listaMateria';
 
 function App() {
 	//const [isEstudianteIn, setEstudianteIn] = useState(false);
@@ -24,7 +25,8 @@ function App() {
 	//const [isAdministrativoIn, setAdministrativoIn] = useState(false);
 	const [listDocente, setListDocentes] = useState([]);
 	//const [isUpdateIn, setIsUpdateIn] = useState(false);
-  
+	const [isMateriaIn, setMateriaIn] = useState(false);
+    const [listaMteria, setlistaMateria] = useState([]);
  
 	const newDocenteHandler =(docenteName, cargaFloat) => {
 			setListDocentes((prevListDocentes) => {
@@ -34,6 +36,15 @@ function App() {
 			  ];
 			});
 		};
+
+	const newMateriaHandler =(MateriaName, cargaFloat) => {
+			setlistaMateria((prevlistaMateria) => {
+			  return [
+				  ...prevlistaMateria, 
+				  {id: Math.trunc(Math.orden() * 100), MateriaName, cargaFloat} 
+			  ];
+			});
+		};	
 	
 	//const storagedEstudianteInfo = localStorage.getItem("isEstudianteIn");
 	//if (storagedEstudianteInfo === 1){
@@ -57,6 +68,12 @@ function App() {
 		setDocenteIn(true);	
 	};	
 
+	const MateriaHandler = () => {
+		console.log("Docente en---");
+		localStorage.setItem("isDocenteIn", 1);
+		setMateriaIn(true);	
+	};	
+
 
 	//const storagedAdministrativoInfo = localStorage.getItem("isAdministrativoIn");
 	//if (storagedAdministrativoInfo === 1){
@@ -70,9 +87,6 @@ function App() {
 		//setAdministrativoIn(true);
 	//}
 	
-		
-
-		
     return (
 		<Router>
 			<Switch>
@@ -81,11 +95,14 @@ function App() {
             <Fragment>
                  <Docente  onNewDocente= {newDocenteHandler}/>
 					  <ListaDocente docentes={listDocente}/>
+			
                 
             </Fragment> 
+
+
          ): ( 
-            <Pagina onDocente = {DocenteHandler}/>
-           
+            //<Pagina onDocente = {DocenteHandler}/>
+            <Pagina onMateria = {MateriaHandler}/>
          )}  ;
 				</Route>
 				<Route exact path="/">
