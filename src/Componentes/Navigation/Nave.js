@@ -1,16 +1,21 @@
-import React from 'react';
+import React, {useContext} from "react";
+import button from "../UI/button";
 import "./Nave.css";
+import AuthContext from "../store/auth-context";
 
-const Nave = () => {
+const Nave = (props) => {
+    const ctx = useContext(AuthContext);
     return (
         <nav className="navbar">
-            <h1> Registrar</h1>
-            <section className="links">  
-            <a href="./Componentes/LOGINADMIN/Login ">Login</a>
-            <a href="./#">despues</a>
+            <section className="links">
+                <button onClick={ctx.onLogout} onLogin={props.onLogin}>
+                    Logout
+                </button>
             </section>
+            
         </nav>
     );
 };
 
 export default Nave;
+ 

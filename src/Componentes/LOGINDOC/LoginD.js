@@ -1,8 +1,8 @@
-import React, {useState, useContext, useReducer, Fragment} from "react";
+import React, {useState, useContext, useReducer} from "react";
 import Card from "../UI/Card";
 import button from "../UI/button";
 import AuthContext from "../store/auth-context";
-import Admin from "../../view/Admin";
+import Docente from "../../view/Docente";
 import { Router } from "react-router";
 
 
@@ -10,7 +10,7 @@ const emailReducer = (state, action) => {
     if (action.type === "USER_INPUT") {
         return {
             value: action.val,
-            isValid: action.val.includes("@gmail"),
+            isValid: action.val.includes(""),
         };
     }
     return {
@@ -19,7 +19,7 @@ const emailReducer = (state, action) => {
     };
 };
 
-const Login = (props) => {
+const LoginD = (props) => {
 const ctx = useContext (AuthContext);
 
     // const [email, setEmail] = useState(""); 
@@ -53,20 +53,15 @@ const ctx = useContext (AuthContext);
     return (
         <Card>
             <form onSubmit ={handlerSubmit}>
-                <label>Email</label>
-                <input type="email" placeholder="ejemplo@gmail.com" onChange={emailChangeHandler} />
+                <label>CI</label>
+                <input type="text" onChange={emailChangeHandler} />
                 <label>Password</label> 
                 <input type="password" onChange={passwordChangeHandler} />
                 <button>Login</button>
             </form>
         </Card>
+       
     );
 };
 
-export default Login;
-
-
-	
-
-
-	
+export default LoginD;

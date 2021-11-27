@@ -1,8 +1,11 @@
-import React from 'react'
+import React from "react";
 import "./button.css";
-const button = (props) => {
-    return  <button>{props.children}</button>;
-    
-};
 
+const button = (props) => {
+    return (
+        <button className="custom" onClick={props.onClick}>
+            {props.children}
+        </button>
+        );
+};
 export default button;
